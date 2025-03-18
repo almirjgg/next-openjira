@@ -17,13 +17,13 @@ const Entries_INITIAL_STATE: EntriesState = {
     },
     {
       _id: uuidv4(),
-      description: 'Pendiente: Prueba 2',
+      description: 'in-progress: Prueba 2',
       status: 'in-progress',
       createdAt: Date.now() - 10000,
     },
     {
       _id: uuidv4(),
-      description: 'Pendiente: Prueba 3',
+      description: 'Completed: Prueba 3',
       status: 'completed',
       createdAt: Date.now() - 12300,
     },
@@ -32,5 +32,5 @@ const Entries_INITIAL_STATE: EntriesState = {
 
 export const EntriesProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(entriesReducer, Entries_INITIAL_STATE);
-  return <EntriesContext.Provider value={{ entries: [] }}>{children}</EntriesContext.Provider>;
+  return <EntriesContext.Provider value={{ ...state }}>{children}</EntriesContext.Provider>;
 };
